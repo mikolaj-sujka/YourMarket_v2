@@ -11,7 +11,7 @@ aby odnaleźć te, które go interesują. Następnie konkretne produkty może do
 Hasło przy rejestracji jest szyfrowane i dodatkowo został dodany AuthGuard (powoduje, że niezalogowany użytkownik nie może przejśc do strony dla zalogowanych).
 
 # Technologie
-- Node.js wraz z Express.js, Angular, Bootstrap 5, SASS (.scss), NgBootstrap, MongoDb
+- Node.js wraz z Express.js, Angular, MongoDb, Tailwind, PrimeNG, ngxs. 
 
 # Instalacja i uruchomienie projektu 
 1. Clone projektu, bądź pobranie całości (repozytorium jest publiczne, więc nie powinno być problemu).
