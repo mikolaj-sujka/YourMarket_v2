@@ -1,0 +1,18 @@
+.btn {
+  @apply p-1 font-normal text-sm;
+  &-sign-up {
+    @apply bg-indigo-600 text-white rounded-2xl px-8 shadow;
+
+    &:hover {
+      @apply bg-white text-indigo-600 transition-all duration-500;
+    }
+  }
+
+  &-sign-in {
+    @apply bg-white text-indigo-600 rounded-2xl px-8 border-indigo-600 border shadow;
+
+    &:hover {
+      @apply bg-indigo-600 text-white transition-all duration-500;
+    }
+  }
+}
