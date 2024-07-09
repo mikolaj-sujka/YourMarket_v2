@@ -1,4 +1,10 @@
 <div class="min-h-screen px-10 flex flex-col">
+  @if(showComponents) {
   <app-nav></app-nav>
+  }
   <router-outlet></router-outlet>
+
+  @if(showComponents) {
+  <app-footer></app-footer>
+  }
 </div>

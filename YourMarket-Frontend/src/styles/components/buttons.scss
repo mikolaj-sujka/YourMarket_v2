@@ -23,4 +23,12 @@
       @apply bg-indigo-600 text-white transition-all duration-500;
     }
   }
+
+  &-send-contact-info {
+    @apply bg-indigo-600 text-white rounded-2xl shadow max-w-40 max-h-10 px-10 items-end;
+
+    &:hover {
+      @apply bg-white text-indigo-600 transition-all duration-500;
+    }
+  }
 }
