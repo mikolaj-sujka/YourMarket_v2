@@ -15,4 +15,12 @@
       @apply bg-indigo-600 text-white transition-all duration-500;
     }
   }
+
+  &-search-for-products {
+    @apply bg-white text-indigo-600 rounded-2xl py-3 shadow w-96 mt-8;
+
+    &:hover {
+      @apply bg-indigo-600 text-white transition-all duration-500;
+    }
+  }
 }
