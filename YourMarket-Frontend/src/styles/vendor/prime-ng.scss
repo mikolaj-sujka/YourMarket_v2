@@ -1,0 +1,17 @@
+p-checkbox {
+  .p-checkbox {
+    @apply border border-indigo-600 rounded-md ml-3;
+
+    .p-checkbox-box {
+      @apply bg-inherit;
+
+      &.p-focus {
+        @apply shadow-none bg-indigo-600;
+      }
+    }
+
+    &-label {
+      @apply text-indigo-600 text-xl font-bold;
+    }
+  }
+}

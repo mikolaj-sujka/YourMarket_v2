@@ -5,9 +5,10 @@ export const routes: Routes = [
     path: '',
     loadComponent: () =>
       import(
-        './features/home-page/components/home-page/home-page.component'
+        './features/home-page/containers/home-page/home-page.component'
       ).then((mod) => mod.HomePageComponent),
     providers: [],
+    pathMatch: 'full',
   },
   {
     path: 'sign-in',

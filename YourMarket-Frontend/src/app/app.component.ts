@@ -16,20 +16,6 @@ import { filter } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'YourMarket_v2';
-  public showComponents: boolean = true;
-
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
-
-  ngOnInit(): void {
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe(() => {
-        const currentRoute =
-          this.activatedRoute.snapshot.firstChild?.routeConfig?.path;
-        this.showComponents =
-          currentRoute !== 'sign-up' && currentRoute !== 'sign-in';
-      });
-  }
 }
