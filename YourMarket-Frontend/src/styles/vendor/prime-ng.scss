@@ -15,3 +15,15 @@ p-checkbox {
     }
   }
 }
+
+p-floatlabel {
+  .p-float-label {
+    input, textarea {
+      @apply border-b border-indigo-600;
+
+      &:focus-visible {
+        @apply outline-none shadow-none;
+      }
+    }
+  }
+}

@@ -1,1 +1,50 @@
-<p>sign-in works!</p>
+<div @fadeIn class="flex justify-center items-center min-h-screen">
+  <div class="flex flex-row p-10 border-2 border-slate-300 shadow-inner">
+    <div class="flex flex-col mx-20" [style]="{ 'max-width': '500px' }">
+      <p class="text-3xl font-bold mb-3">
+        <span class="text-indigo-600">YourMarket</span> Account
+      </p>
+      <div class="my-5" [style]="{ 'max-height': '500px' }">
+        <img src="../../../../assets/sign-in_img.svg" alt="basket-shop-photo" />
+      </div>
+      <p class="text-xl font-bold mb-5">
+        Lörem ipsum fanat
+        <span class="text-indigo-600">egovis midulig</span> nagelprotest.
+        Tremåliga smartball.
+      </p>
+      <p class="text-sm text-slate-300 font-bold mb-5">
+        Lörem ipsum nynt dötyvis trisocial. Laheten bektiga. Gretaeffekten
+        multiheskapet prengen. Palaling triktig i kujyheten. Spegen vadade
+        hajygt och rebel liling.
+      </p>
+      <button class="btn btn-contact-us max-w-72 mt-3">Contact Us</button>
+    </div>
+    <div class="flex flex-col mx-20 justify-center">
+      <p class="text-3xl font-bold mb-1">Sign In</p>
+      <p class="text-sm">
+        You don't have account?
+        <span class="text-indigo-600 font-bold cursor-pointer" [routerLink]="['/sign-up']"
+          >Sign Up</span
+        >
+      </p>
+      <div class="my-10">
+        <p-floatLabel>
+          <input pInputText id="email" />
+          <label for="email">Email</label>
+        </p-floatLabel>
+      </div>
+      <div class="my-10">
+        <p-floatLabel>
+          <input pInputText id="password" />
+          <label for="password">Password</label>
+        </p-floatLabel>
+      </div>
+      <div class="flex flex-row justify-between">
+        <div>
+          <span class="text-indigo-600 font-bold text-lg">Forgot Password</span>
+        </div>
+      </div>
+      <button class="btn btn-sign-in mt-5">Sign In</button>
+    </div>
+  </div>
+</div>
