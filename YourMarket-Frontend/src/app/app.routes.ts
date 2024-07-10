@@ -27,6 +27,14 @@ export const routes: Routes = [
     providers: [],
   },
   {
+    path: 'search-page',
+    loadComponent: () =>
+      import(
+        './features/search-page/containers/search-page/search-page.component'
+      ).then((mod) => mod.SearchPageComponent),
+    pathMatch: 'full',
+  },
+  {
     path: '**',
     redirectTo: '',
   },
