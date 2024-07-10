@@ -17,6 +17,7 @@ export const routes: Routes = [
         (mod) => mod.SignInComponent
       ),
     providers: [],
+    pathMatch: 'full',
   },
   {
     path: 'sign-up',
@@ -25,6 +26,7 @@ export const routes: Routes = [
         (mod) => mod.SignUpComponent
       ),
     providers: [],
+    pathMatch: 'full',
   },
   {
     path: 'search-page',
@@ -32,6 +34,14 @@ export const routes: Routes = [
       import(
         './features/search-page/containers/search-page/search-page.component'
       ).then((mod) => mod.SearchPageComponent),
+    pathMatch: 'full',
+  },
+  {
+    path: 'my-account',
+    loadComponent: () =>
+      import('./features/account/containers/account/account.component').then(
+        (mod) => mod.AccountComponent
+      ),
     pathMatch: 'full',
   },
   {
