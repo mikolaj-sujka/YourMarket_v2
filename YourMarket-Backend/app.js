@@ -9,6 +9,7 @@ import events from "events";
 import authRoutes from "./routes/auth.js";
 import productRoutes from "./routes/product.js";
 import basketRoutes from "./routes/basket.js";
+import userRoutes from "./routes/user.js"; 
 
 dotenv.config();
 // console.log('Environment variables loaded:', process.env.MONGODB_URI);
@@ -51,5 +52,6 @@ app.listen(3005, () => {
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/basket", basketRoutes);
+app.use("/api/user", userRoutes); 
 
 export default app;

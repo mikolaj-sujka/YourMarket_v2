@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { AuthService } from './core/services/auth.service';
 import { AuthGuard } from './core/guards/auth.guard';
+import { UserService } from './core/services/user.service';
 
 export const routes: Routes = [
   {
@@ -47,6 +48,7 @@ export const routes: Routes = [
       ),
     pathMatch: 'full',
     canActivate: [AuthGuard],
+    providers: [UserService],
   },
   {
     path: '**',

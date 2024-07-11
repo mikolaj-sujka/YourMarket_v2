@@ -16,7 +16,7 @@ export class AuthService {
 
   signUpUser(user: SignUpUser) {
     this.http.post('http://localhost:3005/api/auth/signup', user).subscribe(
-      (response) => {
+      (response: any) => {
         this.router.navigate(['/']);
         this.isAuthenticated = true;
         this.authStatusListener.next(true);
@@ -57,8 +57,7 @@ export class AuthService {
           this.authStatusListener.next(false);
           this.router.navigate(['/']);
         },
-        (error) => {
-        }
+        (error) => {}
       );
   }
 

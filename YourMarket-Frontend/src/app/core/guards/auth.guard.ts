@@ -10,6 +10,7 @@ export class AuthGuard {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(): boolean | Observable<boolean> | Promise<boolean> {
+    this.authService.checkAuthStatus();
     const isAuth = this.authService.getIsAuth();
     if (!isAuth) {
       this.router.navigate(['/sign-in']);
