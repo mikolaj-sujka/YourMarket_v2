@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AuthService } from './core/services/auth.service';
 
 export const routes: Routes = [
   {
@@ -25,7 +26,7 @@ export const routes: Routes = [
       import('./core/containers/sign-up/sign-up.component').then(
         (mod) => mod.SignUpComponent
       ),
-    providers: [],
+    providers: [AuthService],
     pathMatch: 'full',
   },
   {

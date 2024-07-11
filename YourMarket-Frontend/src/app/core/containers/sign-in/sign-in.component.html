@@ -23,28 +23,32 @@
       <p class="text-3xl font-bold mb-1">Sign In</p>
       <p class="text-sm">
         You don't have account?
-        <span class="text-indigo-600 font-bold cursor-pointer" [routerLink]="['/sign-up']"
+        <span
+          class="text-indigo-600 font-bold cursor-pointer"
+          [routerLink]="['/sign-up']"
           >Sign Up</span
         >
       </p>
-      <div class="my-10">
-        <p-floatLabel>
-          <input pInputText id="email" />
-          <label for="email">Email</label>
-        </p-floatLabel>
-      </div>
-      <div class="my-10">
-        <p-floatLabel>
-          <input pInputText id="password" />
-          <label for="password">Password</label>
-        </p-floatLabel>
-      </div>
+      <form [formGroup]="form">
+        <div class="my-10">
+          <p-floatLabel>
+            <input formControlName="email" pInputText id="email" />
+            <label for="email">Email</label>
+          </p-floatLabel>
+        </div>
+        <div class="my-10">
+          <p-floatLabel>
+            <input formControlName="password" pInputText id="password" />
+            <label for="password">Password</label>
+          </p-floatLabel>
+        </div>
+      </form>
       <div class="flex flex-row justify-between">
         <div>
           <span class="text-indigo-600 font-bold text-lg">Forgot Password</span>
         </div>
       </div>
-      <button class="btn btn-sign-in mt-5">Sign In</button>
+      <button class="btn btn-sign-in mt-5" (click)="submitForm()">Sign In</button>
     </div>
   </div>
 </div>

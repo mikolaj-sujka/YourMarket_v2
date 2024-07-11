@@ -2,14 +2,16 @@ import express from "express";
 import bodyParser from "body-parser"; // Import body-parser as a default import
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import events from 'events';
+import cookieParser from "cookie-parser";
+import cors from "cors";
+import events from "events";
 
 import authRoutes from "./routes/auth.js";
 import productRoutes from "./routes/product.js";
 import basketRoutes from "./routes/basket.js";
 
 dotenv.config();
-console.log('Environment variables loaded:', process.env.MONGODB_URI);
+// console.log('Environment variables loaded:', process.env.MONGODB_URI);
 
 const app = express();
 
@@ -19,7 +21,10 @@ events.EventEmitter.defaultMaxListeners = 15;
 const { connect } = mongoose;
 const { json, urlencoded } = bodyParser; // Destructure json and urlencoded from body-parser
 
-connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
   .then(() => {
     console.log("Connected to database!");
   })
@@ -27,26 +32,22 @@ connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: tr
     console.log("Connection failed!", error);
   });
 
+app.use(cookieParser());
+app.use(express.json());
 app.use(json());
 app.use(urlencoded({ extended: false }));
 
-app.listen(3000, () => {
-  console.log('Server listening on port 3000');
-});
+const corsOptions = {
+  origin: "http://localhost:4200", // Replace with your frontend's origin
+  credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+  optionsSuccessStatus: 200,
+};
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, PUT, DELETE, OPTIONS"
-  );
-  next();
-});
+app.use(cors(corsOptions));
 
+app.listen(3005, () => {
+  console.log("Server listening on port 3005");
+});
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/basket", basketRoutes);

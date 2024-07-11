@@ -3,29 +3,30 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 export const signup = (req, res, next) => {
-  bcrypt.hash(req.body.password, 10).then((hash) => {
-    const user = new User({
-      email: req.body.email,
-      nip: req.body.nip,
-      city: req.body.city,
-      postalCode: req.body.postalCode,
-      nameOfCompany: req.body.nameOfCompany,
-      password: hash,
-    });
-    user
-      .save()
-      .then((result) => {
-        res.status(201).json({
-          message: "User created!",
-          result: result,
-        });
-      })
-      .catch((err) => {
-        res.status(500).json({
-          error: err,
-        });
+  bcrypt.hash(req.body.password, 10)
+    .then((hash) => {
+      const user = new User({
+        email: req.body.email,
+        nip: req.body.nip,
+        city: req.body.city,
+        postalCode: req.body.postalCode,
+        nameOfCompany: req.body.nameOfCompany,
+        password: hash,
       });
-  });
+      return user.save();
+    })
+    .then((result) => {
+      res.status(201).json({
+        message: "User created successfully!",
+        result: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        message: "User creation failed",
+        error: err.message,
+      });
+    });
 };
 
 export const signin = (req, res, next) => {
@@ -34,7 +35,7 @@ export const signin = (req, res, next) => {
     .then((user) => {
       if (!user) {
         return res.status(401).json({
-          message: "Auth failed",
+          message: "Authentication failed: User not found",
         });
       }
       fetchedUser = user;
@@ -43,31 +44,43 @@ export const signin = (req, res, next) => {
     .then((result) => {
       if (!result) {
         return res.status(401).json({
-          message: "Auth failed",
+          message: "Authentication failed: Password incorrect",
         });
       }
       const token = jwt.sign(
         { email: fetchedUser.email, userId: fetchedUser._id },
-        "secret_this_should_be_longer",
+        process.env.JWT_SECRET,
         { expiresIn: "1h" }
       );
-      res.status(200).json({
-        token: token,
-        expiresIn: 3600,
+      res.cookie('token', token, { httpOnly: true, secure: true, maxAge: 3600000 });
+      return res.status(200).json({
         userId: fetchedUser._id,
         message: "Successfully logged in!",
       });
     })
     .catch((err) => {
-      return res.status(401).json({
-        message: "Auth failed",
+      res.status(500).json({
+        message: "Authentication failed",
+        error: err.message,
       });
     });
 };
 
 export const signout = (req, res, next) => {
-  // Implementation for signout if needed
-  res.status(200).json({
-    message: "Successfully signed out!",
+  res.clearCookie('token');
+  res.status(200).json({ message: 'Successfully signed out!' });
+};
+
+export const checkAuth = (req, res) => {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.status(200).json({ isAuthenticated: false });
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(200).json({ isAuthenticated: false });
+    }
+    return res.status(200).json({ isAuthenticated: true, userId: decoded.userId });
   });
 };

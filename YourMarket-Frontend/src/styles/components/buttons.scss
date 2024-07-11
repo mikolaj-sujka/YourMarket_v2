@@ -63,4 +63,11 @@
       }
     }
   }
+  &-log-out {
+    @apply bg-indigo-600 text-white rounded-2xl px-8 border shadow;
+
+    &:hover {
+      @apply bg-white text-indigo-600 transition-all duration-500;
+    }
+  }
 }

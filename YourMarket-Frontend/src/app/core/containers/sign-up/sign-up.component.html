@@ -1,6 +1,6 @@
 <div @fadeIn class="flex justify-center items-center min-h-screen">
   <div class="p-10 border-2 border-slate-300 shadow-inner">
-    <form class="flex flex-row justify-between">
+    <form [formGroup]="form" class="flex flex-row justify-between">
       <div class="flex flex-col">
         <p class="ml-3 mb-1 text-xl font-bold">Sign Up</p>
         <span class="ml-3 mb-5"
@@ -8,24 +8,48 @@
           <a href="/sign-in" class="text-indigo-600 font-bold">Sign In</a></span
         >
         <p-floatLabel>
-          <input pInputText id="email" />
+          <input
+            type="email"
+            pInputText
+            formControlName="email"
+            pInputText
+            id="email"
+          />
           <label for="email">Email</label>
         </p-floatLabel>
         <div class="my-5">
           <p-floatLabel>
-            <input pInputText id="nip" />
+            <input
+              type="number"
+              pInputText
+              formControlName="nip"
+              pInputText
+              id="nip"
+            />
             <label for="nip">NIP</label>
           </p-floatLabel>
         </div>
         <div class="my-5">
           <p-floatLabel>
-            <input pInputText id="postalCode" />
+            <input
+              type="number"
+              pInputText
+              formControlName="postalCode"
+              pInputText
+              id="postalCode"
+            />
             <label for="postalCode">Postal Code</label>
           </p-floatLabel>
         </div>
         <div class="my-5">
           <p-floatLabel>
-            <input pInputText id="password" />
+            <input
+              type="text"
+              pInputText
+              formControlName="password"
+              pInputText
+              id="password"
+            />
             <label for="password">Password</label>
           </p-floatLabel>
         </div>
@@ -33,33 +57,51 @@
       <div class="flex flex-col">
         <div class="mt-40">
           <p-floatLabel>
-            <input pInputText id="nameOfCompany" />
+            <input
+              type="text"
+              pInputText
+              formControlName="nameOfCompany"
+              pInputText
+              id="nameOfCompany"
+            />
             <label for="nameOfCompany">Name of Company</label>
           </p-floatLabel>
           <div class="my-5">
             <p-floatLabel>
-              <input pInputText id="city" />
+              <input
+                type="text"
+                pInputText
+                formControlName="city"
+                pInputText
+                id="city"
+              />
               <label for="city">City</label>
             </p-floatLabel>
           </div>
           <div class="mt-5">
             <p-floatLabel>
-              <input pInputText id="password" />
-              <label for="password">Repeat Password</label>
+              <input
+                type="text"
+                pInputText
+                formControlName="confirmPassword"
+                pInputText
+                id="confirmPassword"
+              />
+              <label for="confirmPassword">Repeat Password</label>
             </p-floatLabel>
           </div>
         </div>
       </div>
     </form>
     <div class="flex flex-row mt-10">
-      <div>
-        <p-checkbox label="I accept YourMarket Terms of Use"></p-checkbox>
-      </div>
+      <div class="w-56"></div>
       <div>
         <button class="btn btn-back-to-home-page ml-10" routerLink="/">
           Back to Home Page
         </button>
-        <button class="btn btn-sign-up-continue ml-10">Continue</button>
+        <button class="btn btn-sign-up-continue ml-10" (click)="submitForm()">
+          Continue
+        </button>
       </div>
     </div>
   </div>
