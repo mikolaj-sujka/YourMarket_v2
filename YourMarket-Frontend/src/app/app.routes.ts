@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AuthService } from './core/services/auth.service';
+import { AuthGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -17,7 +18,7 @@ export const routes: Routes = [
       import('./core/containers/sign-in/sign-in.component').then(
         (mod) => mod.SignInComponent
       ),
-    providers: [],
+    providers: [AuthService],
     pathMatch: 'full',
   },
   {
@@ -36,6 +37,7 @@ export const routes: Routes = [
         './features/search-page/containers/search-page/search-page.component'
       ).then((mod) => mod.SearchPageComponent),
     pathMatch: 'full',
+    canActivate: [AuthGuard],
   },
   {
     path: 'my-account',
@@ -44,6 +46,7 @@ export const routes: Routes = [
         (mod) => mod.AccountComponent
       ),
     pathMatch: 'full',
+    canActivate: [AuthGuard],
   },
   {
     path: '**',

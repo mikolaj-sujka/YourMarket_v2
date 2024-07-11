@@ -17,11 +17,11 @@ export class AuthService {
   signUpUser(user: SignUpUser) {
     this.http.post('http://localhost:3005/api/auth/signup', user).subscribe(
       (response) => {
-        console.log(response);
-        this.router.navigate(['/search-page']);
+        this.router.navigate(['/']);
+        this.isAuthenticated = true;
+        this.authStatusListener.next(true);
       },
       (error) => {
-        console.log(error);
         this.authStatusListener.next(false);
       }
     );
@@ -36,10 +36,9 @@ export class AuthService {
         (response: any) => {
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
-          this.router.navigate(['/search-page']);
+          this.router.navigate(['/']);
         },
         (error) => {
-          console.log(error);
           this.authStatusListener.next(false);
         }
       );
@@ -56,12 +55,9 @@ export class AuthService {
         () => {
           this.isAuthenticated = false;
           this.authStatusListener.next(false);
-          setTimeout(() => {
-            this.router.navigate(['/']);
-          }, 2000);
+          this.router.navigate(['/']);
         },
         (error) => {
-          console.log(error);
         }
       );
   }

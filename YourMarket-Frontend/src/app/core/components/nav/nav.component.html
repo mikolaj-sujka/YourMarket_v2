@@ -14,8 +14,18 @@
     <button class="btn btn-sign-up" [routerLink]="['/sign-up']">Sign Up</button>
   </div>
   } @else {
-  <div class="flex">
-    <button class="btn btn-log-out" [routerLink]="['/']">Log Out</button>
+  <div class="flex flex-row gap-x-10">
+    <div>
+      <span class="mr-4 pb-2 text-base items-center">My Profile</span>
+      <i
+        class="pi pi-user text-indigo-600 text-2xl cursor-pointer"
+        [routerLink]="['/my-account']"
+      ></i>
+    </div>
+    <button class="btn btn-log-out" (click)="onLogout()">Log Out</button>
   </div>
   }
 </nav>
+<ng-container>
+  <p-toast></p-toast>
+</ng-container>

@@ -9,7 +9,6 @@ import { NavComponent } from './core/components/nav/nav.component';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { filter, map, Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -18,18 +17,13 @@ import { AuthService } from './core/services/auth.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'YourMarket_v2';
   public showComponents$: Observable<boolean> | undefined;
 
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private authService: AuthService
-  ) {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.authService.checkAuthStatus();
     this.showComponents$ = this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
       map(() => {
