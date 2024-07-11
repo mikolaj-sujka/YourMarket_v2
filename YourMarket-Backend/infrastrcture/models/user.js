@@ -1,5 +1,6 @@
-import { Schema, model } from "mongoose";
-import uniqueValidator from "mongoose-unique-validator";
+import pkg from 'mongoose';
+
+const { Schema, model } = pkg;
 
 
 const UserSchema = Schema({
@@ -10,7 +11,5 @@ const UserSchema = Schema({
     postalCode: { type: String, require: true },
     password: { type: String, require: true }
 });
-
-UserSchema.plugin(uniqueValidator);
 
 export default model("User", UserSchema);

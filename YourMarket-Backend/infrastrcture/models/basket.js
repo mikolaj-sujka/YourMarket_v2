@@ -1,4 +1,6 @@
-import { Schema, model } from "mongoose";
+import pkg from 'mongoose';
+
+const { Schema, model } = pkg;
 
 const BasketSchema = Schema({
   userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
