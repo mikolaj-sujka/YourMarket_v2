@@ -1,15 +1,20 @@
-<div @fadeIn class= "shadow-md my-10">
+<div @fadeIn class="shadow-md my-10">
   <div class="flex flex-row p-10 justify-between">
     <div class="flex flex-row max-w-20 max-h-20">
       <img src="../../../../../assets/product_img.svg" alt="product-image" />
-      <div class="flex flex-col ml-10 items-center justify-center">
-        <p class="text-2xl text-start mb-2">Name</p>
-        <p class="text-base text-end ml-5">Description</p>
+      <div class="flex flex-col ml-10 items-center justify-center min-w-40">
+        <p class="text-2xl text-start mb-2">{{ product?.name }}</p>
+        <p class="text-base text-end ml-5">{{ product?.description }}</p>
       </div>
     </div>
     <div class="flex ml-10 items-center justify-center">
-      <p class="text-2xl text-end mr-10">Price</p>
-      <p-button icon="pi pi-check" [rounded]="true" [text]="true" [raised]="true" />
+      <p class="text-2xl text-end mr-10">{{ product?.price }}</p>
+      <p-button
+        icon="pi pi-check"
+        [rounded]="true"
+        [text]="true"
+        [raised]="true"
+      />
     </div>
   </div>
 </div>

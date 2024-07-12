@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { AuthService } from './core/services/auth.service';
 import { AuthGuard } from './core/guards/auth.guard';
 import { UserService } from './core/services/user.service';
+import { ProductService } from './core/services/product.service';
 
 export const routes: Routes = [
   {
@@ -39,6 +40,7 @@ export const routes: Routes = [
       ).then((mod) => mod.SearchPageComponent),
     pathMatch: 'full',
     canActivate: [AuthGuard],
+    providers: [ProductService],
   },
   {
     path: 'my-account',

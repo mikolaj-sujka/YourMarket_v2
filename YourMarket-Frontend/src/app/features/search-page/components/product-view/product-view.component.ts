@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { fadeInAnimation } from '../../../../shared/animations';
 import { ButtonModule } from 'primeng/button';
+import { Product } from '../../models/product';
 
 @Component({
   selector: 'app-product-view',
@@ -10,6 +11,9 @@ import { ButtonModule } from 'primeng/button';
   styleUrl: './product-view.component.scss',
   animations: [fadeInAnimation],
 })
-export class ProductViewComponent {
-  // Input Product
+export class ProductViewComponent implements OnInit{
+  ngOnInit(): void {
+    console.log(this.product);
+  }
+  @Input() product: Product | undefined;
 }

@@ -1,4 +1,5 @@
 <div @fadeIn class="flex flex-col mx-20">
-  <!-- ngfor po liscie -->
-  <app-product-view></app-product-view>
+  <div *ngFor="let product of products$ | async">
+    <app-product-view [product]="product"></app-product-view>
+  </div>
 </div>
