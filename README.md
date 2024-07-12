@@ -42,20 +42,20 @@ Warstwa klienta jest odpowiedzialna za interfejs użytkownika i logikę aplikacj
 
 ## 5. Endpointy
 
-### 5.1 Auth routes
-- /signup: POST - Zakładanie konta.
-- /signin: POST - Logowanie.
-- /signout: POST - Wylogowanie.
-- /checkAuth: GET - Sprawdzenie czy użytkownik ma wazny token JWT.
-### 5.2 User routes
-- /current: GET - Dane obecnego użytkownika.
-### 5.3 Basket routes
-- /add: POST - Dodanie produktu do koszyka.
-### 5.4 Product routes
-- /: GET - Otrzymanie wszystkich dostępnych produktów.
-### 5.5 Order routes
-- /create: POST - Stworzenie/finalizacja zamówienia.
-- /history: GET - Otrzymanie historii wszystkich zamówień.
+### 5.1 Auth routes `api/auth`
+- `/signup`: POST - Zakładanie konta.
+- `/signin`: POST - Logowanie.
+- `/signout`: POST - Wylogowanie.
+- `/checkAuth`: GET - Sprawdzenie czy użytkownik ma wazny token JWT.
+### 5.2 User routes `api/user`
+- `/current`: GET - Dane obecnego użytkownika.
+### 5.3 Basket routes `api/basket`
+- `/add`: POST - Dodanie produktu do koszyka.
+### 5.4 Product routes `api/products`
+- `/`: GET - Otrzymanie wszystkich dostępnych produktów.
+### 5.5 Order routes `api/order`
+- `/create`: POST - Stworzenie/finalizacja zamówienia.
+- `/history`: GET - Otrzymanie historii wszystkich zamówień.
 
 ## 6. Wireframes
 
