@@ -58,9 +58,30 @@ Warstwa klienta jest odpowiedzialna za interfejs użytkownika i logikę aplikacj
 - `/history`: GET - Otrzymanie historii wszystkich zamówień.
 
 ## 6. Wireframes
+### 6.1 Home page
+![Zrzut ekranu 2024-07-12 185036](https://github.com/user-attachments/assets/7a7755a1-6de0-4a8f-82f4-82b0de903373)
+![Zrzut ekranu 2024-07-12 185049](https://github.com/user-attachments/assets/3bb3e674-e42d-430d-815b-ed153ac7810c)
+![Zrzut ekranu 2024-07-12 185132](https://github.com/user-attachments/assets/372435e8-a763-4208-b138-9cfc35cc9682)
+
+### 6.2 Sign up page
+![Zrzut ekranu 2024-07-12 185101](https://github.com/user-attachments/assets/a2353860-c45b-43d4-9850-ef72bf8cb2a2)
+
+### 6.3 Sign in page
+![Zrzut ekranu 2024-07-12 185108](https://github.com/user-attachments/assets/2afd03c5-c90f-441d-88c1-cfd7402574e4)
+
+### 6.4 My basket page
+![Zrzut ekranu 2024-07-12 185617](https://github.com/user-attachments/assets/dd7307cc-3753-44bc-b9a3-627bb88783c6)
+
+### 6.5 My account page
+![Zrzut ekranu 2024-07-12 185154](https://github.com/user-attachments/assets/ca525cf2-c8d5-4ce9-8493-a7ecc3af83ad)
+
+### 6.6 My orders history page
+![Zrzut ekranu 2024-07-12 185144](https://github.com/user-attachments/assets/873d9d95-cac5-49ee-898d-f66516203135)
+
+### 6.7 Search products page
+![Zrzut ekranu 2024-07-12 185213](https://github.com/user-attachments/assets/27bb388f-2aae-42a4-ac57-f44bfd977edb)
 
 ## 7. Runbook
 
-## 8. Przyszłe rozszerzenia
 
   
