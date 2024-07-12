@@ -16,6 +16,13 @@
   } @else {
   <div class="flex flex-row gap-x-10">
     <div>
+      <span class="mr-4 pb-2 text-base items-center">My Orders</span>
+      <i
+        class="pi pi-history text-indigo-600 text-2xl cursor-pointer"
+        [routerLink]="['/my-orders']"
+      ></i>
+    </div>
+    <div>
       <span class="mr-4 pb-2 text-base items-center">My Basket</span>
       <i
         class="pi pi-shopping-bag text-indigo-600 text-2xl cursor-pointer"

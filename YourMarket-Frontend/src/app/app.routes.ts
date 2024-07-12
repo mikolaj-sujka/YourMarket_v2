@@ -62,6 +62,15 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'my-orders',
+    loadComponent: () =>
+      import(
+        './features/orders/containers/order-history/order-history.component'
+      ).then((mod) => mod.OrderHistoryComponent),
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
+  {
     path: '**',
     redirectTo: '',
   },

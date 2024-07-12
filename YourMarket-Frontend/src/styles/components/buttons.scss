@@ -70,4 +70,11 @@
       @apply bg-white text-indigo-600 transition-all duration-500;
     }
   }
+  &-place-order {
+    @apply bg-indigo-600 text-white rounded-2xl px-8 shadow;
+
+    &:hover {
+      @apply bg-white text-indigo-600 transition-all duration-500;
+    }
+  }
 }

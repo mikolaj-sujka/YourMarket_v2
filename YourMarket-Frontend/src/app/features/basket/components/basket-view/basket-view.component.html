@@ -1,13 +1,23 @@
 @if ( basket) {
-<div>
-  <h2>Your Basket</h2>
-  @for (item of basket.items; track $index) {
+<div class="flex flex-row justify-center gap-x-10 mb-10">
   <div>
-    <p>Product Name: {{ item.name }}</p>
-    <p>Price: {{ item.price }}</p>
-    <p>Quantity: {{ item.quantity }}</p>
+    <p class="text-2xl mt-10 mb-20">Your basket</p>
+    <div class="border-y border-black">
+      <p class="ml-2 text-base">
+        {{ basket.items.length }} item(s) in your basket.
+      </p>
+    </div>
+    @for (item of basket.items; track $index) {
+    <div class="flex flex-row my-10">
+      <p>Product Name: {{ item.name }}</p>
+      <p>Price: {{ item.price }}</p>
+      <p>Quantity: {{ item.quantity }}</p>
+    </div>
+    }
   </div>
-  }
+  <div>
+    <button class="btn btn-place-order">Place Order</button>
+  </div>
 </div>
 } @else {
 <p>No items in the basket.</p>
