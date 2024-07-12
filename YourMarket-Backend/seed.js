@@ -4,7 +4,7 @@ import Product from './infrastrcture/models/product.js';
 
 dotenv.config();
 
-const uri = "mongodb+srv://mikolajsujka:mikolajsujka123@cluster0.i4zrhmb.mongodb.net/?authMechanism=DEFAULT"
+const uri = process.env.MONGODB_URI;
 
 if (!uri) {
   console.error('MONGODB_URI is not defined in the environment variables');
