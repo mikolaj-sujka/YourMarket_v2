@@ -1,3 +1,4 @@
+import product from "./../infrastrcture/models/product.js";
 import Product from "./../infrastrcture/models/product.js";
 
 export const addProduct = (req, res, next) => {
@@ -5,7 +6,7 @@ export const addProduct = (req, res, next) => {
     name: req.body.name,
     price: req.body.price,
     description: req.body.description,
-    category: req.body.category,
+    productId: req.body.productId,
   });
   product.save()
     .then(result => {

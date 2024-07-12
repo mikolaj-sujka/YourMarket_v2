@@ -1,5 +1,15 @@
 <div @fadeIn class="flex flex-col mx-20">
   <div *ngFor="let product of products$ | async">
-    <app-product-view [product]="product"></app-product-view>
+    <app-product-view
+      (addToBasketEvent)="
+        addToBasket(
+          $event.productId,
+          $event.price,
+          $event.name,
+          $event.quantity
+        )
+      "
+      [product]="product"
+    ></app-product-view>
   </div>
 </div>

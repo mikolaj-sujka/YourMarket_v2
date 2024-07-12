@@ -1,15 +1,17 @@
-import pkg from 'mongoose';
+import mongoose from 'mongoose';
 
-const { Schema, model } = pkg;
-
-const BasketSchema = Schema({
-  userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
-  products: [
-    {
-      productId: { type: Schema.Types.ObjectId, ref: "Product", required: true },
-      quantity: { type: Number, required: true }
-    }
-  ]
+const basketItemSchema = new mongoose.Schema({
+  productId: { type: mongoose.Schema.Types.ObjectId, required: true },
+  name: { type: String, required: true },
+  price: { type: Number, required: true },
+  quantity: { type: Number, required: true },
 });
 
-export default model("Basket", BasketSchema);
+const basketSchema = new mongoose.Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  items: [basketItemSchema],
+});
+
+const Basket = mongoose.model('Basket', basketSchema);
+
+export default Basket;

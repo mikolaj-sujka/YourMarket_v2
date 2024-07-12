@@ -1,63 +1,95 @@
-import Basket from "./../infrastrcture/models/basket.js";
+import mongoose from "mongoose";
+import Basket from "../infrastrcture/models/basket.js";
 
-export const addProductToBasket = (req, res, next) => {
-  const basket = new Basket({
-    userId: req.body.userId,
-    products: req.body.products,
-  });
-  basket.save()
-    .then(result => {
-      res.status(201).json({
-        message: "Basket created!",
-        result: result,
+export const addProductToBasket = async (req, res) => {
+  try {
+    const { userId, productId, name, price, quantity } = req.body;
+    console.log(req.body);
+
+    // Validate productId as ObjectId
+    if (!mongoose.Types.ObjectId.isValid(productId)) {
+      return res.status(400).json({ message: "Invalid productId" });
+    }
+
+    let basket = await Basket.findOne({ userId });
+
+    if (!basket) {
+      basket = new Basket({ userId, items: [] });
+    }
+
+    const existingItemIndex = basket.items.findIndex((item) =>
+      item.productId.equals(productId)
+    );
+
+    if (existingItemIndex >= 0) {
+      basket.items[existingItemIndex].quantity += quantity;
+    } else {
+      basket.items.push({
+        productId: mongoose.Types.ObjectId(productId),
+        name,
+        price,
+        quantity,
       });
-    })
-    .catch(err => {
-      res.status(500).json({
-        error: err,
-      });
+    }
+
+    const result = await basket.save();
+    res.status(201).json({
+      message: "Product added to basket!",
+      result: result,
     });
+  } catch (err) {
+    console.error("Error adding product to basket:", err);
+    res.status(500).json({
+      message: "Error adding product to basket",
+      error: err.message,
+    });
+  }
 };
 
-export const getBasketForUser = (req, res, next) => {
-  Basket.findOne({ userId: req.params.userId })
-    .populate("products.productId")
-    .then(basket => {
-      res.status(200).json(basket);
-    })
-    .catch(err => {
-      res.status(500).json({
-        error: err,
-      });
+export const getBasketForUser = async (req, res) => {
+  try {
+    const basket = await Basket.findOne({ userId: req.params.userId });
+    if (!basket) {
+      return res.status(404).json({ message: "Basket not found" });
+    }
+    res.status(200).json(basket);
+  } catch (err) {
+    console.error("Error fetching basket for user:", err);
+    res.status(500).json({
+      message: "Error fetching basket for user",
+      error: err.message,
     });
+  }
 };
 
-export const updateBasketForUser = (req, res, next) => {
-  Basket.findOneAndUpdate({ userId: req.params.userId }, req.body, { new: true })
-    .then(result => {
-      res.status(200).json({
-        message: "Basket updated!",
-        result: result,
-      });
-    })
-    .catch(err => {
-      res.status(500).json({
-        error: err,
-      });
+export const updateBasketForUser = async (req, res) => {
+  try {
+    const result = await Basket.findOneAndUpdate(
+      { userId: req.params.userId },
+      req.body,
+      { new: true }
+    );
+    res.status(200).json({
+      message: "Basket updated!",
+      result: result,
     });
+  } catch (err) {
+    res.status(500).json({
+      error: err,
+    });
+  }
 };
 
-export const deleteBasketForUser = (req, res, next) => {
-  Basket.findOneAndRemove({ userId: req.params.userId })
-    .then(result => {
-      res.status(200).json({
-        message: "Basket deleted!",
-        result: result,
-      });
-    })
-    .catch(err => {
-      res.status(500).json({
-        error: err,
-      });
+export const deleteBasketForUser = async (req, res) => {
+  try {
+    const result = await Basket.findOneAndRemove({ userId: req.params.userId });
+    res.status(200).json({
+      message: "Basket deleted!",
+      result: result,
     });
+  } catch (err) {
+    res.status(500).json({
+      error: err,
+    });
+  }
 };

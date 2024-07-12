@@ -53,6 +53,15 @@ export const routes: Routes = [
     providers: [UserService],
   },
   {
+    path: 'my-basket',
+    loadComponent: () =>
+      import('./features/basket/containers/basket/basket.component').then(
+        (mod) => mod.BasketComponent
+      ),
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
+  {
     path: '**',
     redirectTo: '',
   },

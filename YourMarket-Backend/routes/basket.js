@@ -1,11 +1,11 @@
-import { Router } from "express";
-import { addProductToBasket, getBasketForUser, updateBasketForUser, deleteBasketForUser } from "../controllers/basket-controller.js";
+import express from 'express';
+import { addProductToBasket, getBasketForUser, updateBasketForUser, deleteBasketForUser } from '../controllers/basket-controller.js';
 
-const router = Router();
+const router = express.Router();
 
-router.post("/", addProductToBasket);
-router.get("/:userId", getBasketForUser);
-router.put("/:userId", updateBasketForUser);
-router.delete("/:userId", deleteBasketForUser);
+router.post('/add', addProductToBasket);
+router.get('/:userId', getBasketForUser);
+router.put('/:userId', updateBasketForUser);
+router.delete('/:userId', deleteBasketForUser);
 
 export default router;
