@@ -42,7 +42,7 @@ export class BasketComponent implements OnInit, OnDestroy {
 
   public createOrder(): void {
     console.log('Creating order');
-    this.orderService.createOrder().subscribe();
+    this.orderService.createOrder(this._userId!).subscribe();
   }
 
   ngOnDestroy(): void {

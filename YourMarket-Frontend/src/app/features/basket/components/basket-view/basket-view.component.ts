@@ -12,12 +12,7 @@ export class BasketViewComponent {
   @Input() basket: Basket | undefined;
   @Output() createOrder = new EventEmitter<void>();
 
-  constructor() {
-    console.log(this.basket);
-  }
-
   public onCreateOrder() {
-    console.log('Creating order');
     this.createOrder.emit();
   }
 }

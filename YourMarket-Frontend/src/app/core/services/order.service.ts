@@ -10,11 +10,13 @@ export class OrderService {
 
   constructor(private http: HttpClient) {}
 
-  createOrder(): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/create`, {});
+  createOrder(userId: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/create`, { userId });
   }
 
-  getOrderHistory(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/history`);
+  getOrders(userId: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/history`, {
+      params: { userId },
+    });
   }
 }

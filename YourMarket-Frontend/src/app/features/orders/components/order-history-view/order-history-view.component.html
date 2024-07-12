@@ -1,0 +1,25 @@
+@if (order) {
+<div class="flex flex-col justify-center gap-x-10 mb-24 mt-10">
+  <div class="mb-10 border-b-2 border-black w-72">
+    <p class="text-2xl mt-10 mb-10">Order History</p>
+  </div>
+  <div class="flex flex-row">
+    <p-table [value]="order">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Order Number</th>
+          <th>Order Date</th>
+          <th>Total Value</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+        <tr>
+          <td>{{ product.orderNumber }}</td>
+          <td>{{ product.orderDate | date : "fullDate" }}</td>
+          <td>{{ product.totalValue }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+} @else { }

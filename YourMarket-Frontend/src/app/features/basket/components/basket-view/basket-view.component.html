@@ -9,15 +9,25 @@
     </div>
     @for (item of basket.items; track $index) {
     <div class="flex flex-row my-10">
-      <p>Product Name: {{ item.name }}</p>
-      <p>Price: {{ item.price }}</p>
-      <p>Quantity: {{ item.quantity }}</p>
+      <p class="mr-1">
+        <span class="text-indigo-600">Product Name: </span>{{ item.name }}
+      </p>
+      <p class="mr-1">
+        <span class="text-indigo-600">Price: </span> {{ item.price }}$
+      </p>
+      <p class="mr-1">
+        <span class="text-indigo-600">Quantity: </span> {{ item.quantity }}
+      </p>
     </div>
     }
   </div>
-  <div>
-    <button class="btn btn-place-order" (click)="onCreateOrder()">Place Order</button>
+  @if (basket.items.length > 0) {
+  <div class="mt-auto">
+    <button class="btn btn-place-order" (click)="onCreateOrder()">
+      Place Order
+    </button>
   </div>
+  }
 </div>
 } @else {
 <p>No items in the basket.</p>
