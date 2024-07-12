@@ -3,6 +3,8 @@ import { AuthService } from './core/services/auth.service';
 import { AuthGuard } from './core/guards/auth.guard';
 import { UserService } from './core/services/user.service';
 import { ProductService } from './core/services/product.service';
+import { BasketService } from './core/services/basket.service';
+import { OrderService } from './core/services/order.service';
 
 export const routes: Routes = [
   {
@@ -60,6 +62,7 @@ export const routes: Routes = [
       ),
     pathMatch: 'full',
     canActivate: [AuthGuard],
+    providers: [UserService, BasketService, OrderService],
   },
   {
     path: 'my-orders',

@@ -6,6 +6,7 @@ import { BasketViewComponent } from '../../components/basket-view/basket-view.co
 import { Basket } from '../../models/basket';
 import { Observable, Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { OrderService } from '../../../../core/services/order.service';
 
 @Component({
   selector: 'app-basket',
@@ -14,6 +15,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './basket.component.html',
   styleUrl: './basket.component.scss',
   animations: [fadeInAnimation],
+  providers: [UserService, BasketService, OrderService],
 })
 export class BasketComponent implements OnInit, OnDestroy {
   private _userId: string | undefined;
@@ -22,7 +24,8 @@ export class BasketComponent implements OnInit, OnDestroy {
 
   constructor(
     private basketService: BasketService,
-    private userSerive: UserService
+    private userSerive: UserService,
+    private orderService: OrderService
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +38,11 @@ export class BasketComponent implements OnInit, OnDestroy {
         console.error('Error getting current user:', error);
       }
     ));
+  }
+
+  public createOrder(): void {
+    console.log('Creating order');
+    this.orderService.createOrder().subscribe();
   }
 
   ngOnDestroy(): void {

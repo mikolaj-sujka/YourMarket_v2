@@ -1,4 +1,4 @@
-@if ( basket) {
+@if (basket) {
 <div class="flex flex-row justify-center gap-x-10 mb-10">
   <div>
     <p class="text-2xl mt-10 mb-20">Your basket</p>
@@ -16,7 +16,7 @@
     }
   </div>
   <div>
-    <button class="btn btn-place-order">Place Order</button>
+    <button class="btn btn-place-order" (click)="onCreateOrder()">Place Order</button>
   </div>
 </div>
 } @else {
