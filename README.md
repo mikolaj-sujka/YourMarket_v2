@@ -29,12 +29,34 @@ i Express.js oraz frontendem uruchomionym na Angular. Dane przechowywane są w b
 Warstwa klienta jest odpowiedzialna za interfejs użytkownika i logikę aplikacji działającą po stronie przeglądarki. Została zbudowana z użyciem Angular i komunikuje się z backendem za pośrednictwem API RESTful.
 
 #### 4.2.1 Warstwa klienta (frontend)
+Warstwa klienta jest odpowiedzialna za interfejs użytkownika i logikę aplikacji działającą po stronie przeglądarki. Została zbudowana z użyciem Angulara i komunikuje się z backendem za pośrednictwem API RESTful.
 
 #### 4.2.2 Warstwa serwera (backend)
+Warstwa serwera zarządza logiką biznesową aplikacji i komunikuje się z bazą danych MongoDB. Została zbudowana z użyciem Node.js i Express.js.
 
 #### 4.2.3 Warstwa bazy danych 
+Warstwa bazy danych jest odpowiedzialna za przechowywanie danych aplikacji. Dane są przechowywane w dokumentach w bazie danych MongoDB
 
 ### 4.3 Przepływ danych
+1. Rejestracja i logowanie użytkownika:
+- Użytkownik wprowadza swoje dane w formularzu na stronie frontendowej.
+- Dane są wysyłane do serwera za pomocą żądania HTTP POST.
+- Serwer weryfikuje dane, hashuje hasło i zapisuje nowego użytkownika w bazie danych.
+- Podczas logowania serwer generuje token JWT, który jest zwracany do klienta i przechowywany w ciasteczkach.
+
+2. Przeglądanie dostępnych produktów:
+- Użytkownik może przeglądać dostępne produkty.
+- Użytkownik może dodać produkt do koszyka.
+
+3. Sprawdzanie koszyka i finalizowanie zamówienia.
+- Użytkownik może zobaczyć obecnie jakie produkty dodał do koszyka.
+- Użytkownik może zawartość koszyka sfinalizować jako zamówienie
+
+4. Sprawdzenie informacji o swoim koncie.
+- Użytkownik może podejrzeć informacje o swoim koncie.
+
+5. Sprawdzanie historii zamówień.
+- Użytkownik może podejrzeć historię swoich zamówień. 
 
 ### 4.4 Bezpieczeństwo 
 - **Hashowanie haseł:** Hasła użytkowników są hashowane przy użyciu biblioteki bcrypt przed zapisaniem ich w bazie danych.
@@ -80,8 +102,3 @@ Warstwa klienta jest odpowiedzialna za interfejs użytkownika i logikę aplikacj
 
 ### 6.7 Search products page
 ![Zrzut ekranu 2024-07-12 185213](https://github.com/user-attachments/assets/27bb388f-2aae-42a4-ac57-f44bfd977edb)
-
-## 7. Runbook
-
-
-  
